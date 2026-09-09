@@ -53,6 +53,13 @@ h2 {
   font-size: 1.6em;
 }
 
+/* ESTILIZAÇÃO DOS CARDS RECLICÁVEIS */
+.tip-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .tip {
   background-color: #d6eaf8;
   padding: 15px;
@@ -60,6 +67,82 @@ h2 {
   border-left: 6px solid #2e86c1;
   font-size: 1.2em;
   border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.tip:hover {
+  background-color: #c2e1f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* EFEITO DE MODAL / SOBREPOSIÇÃO (OVERLAY) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
+  backdrop-filter: blur(4px);            /* Efeito opcional de desfoque no fundo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* Quando o modal for acionado pelo link (:target) */
+.modal-overlay:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Conteúdo do Card em Destaque */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  border-left: 8px solid #2e86c1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay:target .modal-content {
+  transform: scale(1);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #2e86c1;
+}
+
+.modal-content p {
+  font-size: 1.3em;
+  margin-bottom: 0;
+}
+
+/* Botão de Fechar Modal */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  text-decoration: none;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #e74c3c;
 }
 
 footer {
