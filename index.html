@@ -3,269 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treinos & Exercícios - Guia Completo</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Elementos 3D de fundo (Pesos/Dumbbells & Formas Fitness) */
-        .bg-3d-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            perspective: 1000px;
-        }
-
-        .shape-3d {
-            position: absolute;
-            transform-style: preserve-3d;
-            animation: float 12s infinite ease-in-out alternate;
-            opacity: 0.25;
-        }
-
-        /* Halter / Peso 3D em CSS */
-        .dumbbell-3d {
-            top: 15%;
-            right: 10%;
-            width: 100px;
-            height: 20px;
-            background: #38bdf8;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-            transform: rotateX(45deg) rotateY(30deg);
-        }
-
-        .dumbbell-3d::before, .dumbbell-3d::after {
-            content: '';
-            position: absolute;
-            top: -20px;
-            width: 25px;
-            height: 60px;
-            background: #0284c7;
-            border-radius: 6px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-        }
-
-        .dumbbell-3d::before { left: -15px; }
-        .dumbbell-3d::after { right: -15px; }
-
-        .kettlebell-3d {
-            bottom: 20%;
-            left: 8%;
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle at 30% 30%, #ef4444, #991b1b);
-            border-radius: 50%;
-            transform: rotateY(-35deg) rotateX(20deg);
-            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.6), 0 0 25px rgba(239, 68, 68, 0.4);
-        }
-
-        .kettlebell-3d::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 15px;
-            width: 40px;
-            height: 25px;
-            border: 8px solid #991b1b;
-            border-bottom: none;
-            border-radius: 20px 20px 0 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg) rotateX(10deg); }
-            50% { transform: translateY(-30deg) rotate(15deg) rotateX(35deg); }
-            100% { transform: translateY(0px) rotate(-10deg) rotateX(10deg); }
-        }
-
-        /* Layout e Conteúdo */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            margin-bottom: 40px;
-            border-bottom: 2px solid #1e293b;
-            padding-bottom: 20px;
-        }
-
-        .back-link {
-            display: inline-block;
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 15px;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover { color: #7dd3fc; }
-
-        h1 {
-            font-size: 2.8rem;
-            color: #f8fafc;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-detail {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .card-detail h2 {
-            color: #38bdf8;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-detail p {
-            color: #cbd5e1;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        /* Figuras/Ilustrações CSS */
-        .figure-box {
-            width: 100%;
-            height: 180px;
-            background: #0f172a;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            border: 1px solid #1e293b;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .barbell-illustration {
-            width: 200px;
-            height: 10px;
-            background: #94a3b8;
-            position: relative;
-            border-radius: 5px;
-        }
-
-        .barbell-illustration::before, .barbell-illustration::after {
-            content: '';
-            position: absolute;
-            top: -25px;
-            width: 20px;
-            height: 60px;
-            background: #38bdf8;
-            border-radius: 4px;
-        }
-
-        .barbell-illustration::before { left: 20px; box-shadow: -10px 5px 0 #0284c7; }
-        .barbell-illustration::after { right: 20px; box-shadow: 10px 5px 0 #0284c7; }
-
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .topic-item {
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #38bdf8;
-        }
-
-        .topic-item h3 {
-            color: #f1f5f9;
-            margin-bottom: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #64748b;
-            border-top: 1px solid #1e293b;
-            margin-top: 50px;
-        }
-    </style>
+    <title>Portal Fitness - Início</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Elementos 3D flutuantes -->
+    <!-- Elementos 3D de fundo (Renderizados via CSS puro) -->
     <div class="bg-3d-container">
         <div class="shape-3d dumbbell-3d"></div>
+        <div class="shape-3d apple-3d"></div>
         <div class="shape-3d kettlebell-3d"></div>
     </div>
 
     <div class="container">
         <header>
-            <a href="index.html" class="back-link">← Voltar à Página Principal</a>
-            <h1>Treinos & Exercícios</h1>
-            <p>Metodologias aplicadas para hipertrofia, força e reabilitação física.</p>
+            <h1>Portal Fitness & Performance</h1>
+            <p>Selecione um dos temas abaixo para aprofundar seus conhecimentos em saúde, treino e nutrição.</p>
         </header>
 
-        <section class="card-detail">
-            <h2>🏋️ Metodologias de Treinamento</h2>
-            <p>O treinamento de força deve ser estruturado com base em princípios biológicos como a sobrecarga progressiva, especificidade e variação de estímulos.</p>
-            
-            <div class="figure-box">
-                <div class="barbell-illustration"></div>
-            </div>
+        <main class="grid-cards">
+            <!-- Card 1: Treinos -->
+            <a href="treinos.html" class="card">
+                <div class="card-icon">🏋️</div>
+                <h2>Treinos & Exercícios</h2>
+                <p>Aprofunde-se em metodologias de hipertrofia, força, calistenia e divisão de treinos para máxima performance.</p>
+                <span class="card-link">Ver detalhes &rarr;</span>
+            </a>
 
-            <div class="topics-grid">
-                <div class="topic-item">
-                    <h3>Treino ABCDE</h3>
-                    <p>Ideal para praticantes avançados, permitindo alto volume de treino focado em cada grupo muscular isolado com maior tempo de recuperação.</p>
-                </div>
-                <div class="topic-item">
-                    <h3>HIIT & Cardio</h3>
-                    <p>O Treino Intervalado de Alta Intensidade melhora o condicionamento cardiorrespiratório e otimiza a queima de gordura em menor tempo.</p>
-                </div>
-                <div class="topic-item">
-                    <h3>Calistenia</h3>
-                    <p>Utilização do próprio peso corporal para desenvolvimento de força relativa, controle motor e consciência corporal avançada.</p>
-                </div>
-            </div>
-        </section>
+            <!-- Card 2: Nutrição -->
+            <a href="nutricao.html" class="card">
+                <div class="card-icon">🍏</div>
+                <h2>Nutrição & Alimentação</h2>
+                <p>Descubra estratégias de macronutrientes, dietas para ganho ou perda de massa e regulação metabólica.</p>
+                <span class="card-link">Ver detalhes &rarr;</span>
+            </a>
 
-        <section class="card-detail">
-            <h2>📊 Organização do Volume e Intensidade</h2>
-            <p>Para otimizar o ganho de massa muscular, é crucial manter uma faixa de 10 a 20 séries semanais por grupo muscular, respeitando os limites de recuperação do sistema nervoso central.</p>
-        </section>
+            <!-- Card 3: Saúde Mental -->
+            <a href="saude-mental.html" class="card">
+                <div class="card-icon">🧠</div>
+                <h2>Saúde Mental & Descanso</h2>
+                <p>Entenda a importância da higiene do sono, recuperação do sistema nervoso e controle de estresse.</p>
+                <span class="card-link">Ver detalhes &rarr;</span>
+            </a>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Portal Fitness - Todos os direitos reservados.</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Portal Fitness - Todos os direitos reservados.</p>
-    </footer>
 </body>
 </html>
