@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde Mental & Descanso - Guia Completo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Objeto 3D - Esfera / Cérebro em CSS */
+        .bg-3d-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            perspective: 1000px;
+        }
+
+        .sphere-3d {
+            position: absolute;
+            top: 25%;
+            right: 12%;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #a855f7, #581c87);
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+            animation: float 10s infinite ease-in-out alternate;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #c084fc, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-detail {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-detail h2 {
+            color: #c084fc;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .topic-item {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #c084fc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-3d-container">
+        <div class="sphere-3d"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Voltar à Página Principal</a>
+            <h1>Saúde Mental & Descanso</h1>
+            <p>O pilar fundamental para recuperação neurológica, regulação hormonal e longevidade.</p>
+        </header>
+
+        <section class="card-detail">
+            <h2>🧠 Sono e Recuperação Sistemática</h2>
+            <p>É durante o sono profundo que o corpo libera o GH (hormônio do crescimento), consolida o aprendizado motor e reduz o cortisol sistêmico.</p>
+
+            <div class="topics-grid">
+                <div class="topic-item">
+                    <h3>Higiene do Sono</h3>
+                    <p>Redução da exposição à luz azul 1 hora antes de dormir e manutenção do quarto escuro e fresco para induzir a melatonina.</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Manejo de Estresse</h3>
+                    <p>Práticas diárias de meditação ou respiração guiada reduzem a ansiedade e mantêm os níveis de cortisol sob controle.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Portal Fitness - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
